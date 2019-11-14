@@ -17,7 +17,7 @@ object NetworkModule {
     fun provideApiRetrofitService(): ApiService {
 
         return Retrofit.Builder()
-            .baseUrl("https://example.com")
+            .baseUrl("https://official-joke-api.appspot.com")
             .addConverterFactory(JacksonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
