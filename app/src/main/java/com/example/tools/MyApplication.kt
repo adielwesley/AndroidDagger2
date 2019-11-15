@@ -1,6 +1,7 @@
 package com.example.tools
 
 import android.app.Application
+import androidx.multidex.MultiDex
 import com.example.tools.di.components.ApplicationComponent
 import com.example.tools.di.components.DaggerApplicationComponent
 
@@ -11,5 +12,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
          appComponent = DaggerApplicationComponent.create()
+        MultiDex.install(this)
+
     }
 }

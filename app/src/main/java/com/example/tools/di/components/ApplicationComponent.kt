@@ -14,5 +14,7 @@ interface ApplicationComponent {
 
     fun loginComponent(): LoginComponent.Factory
 
+    fun jokesComponent() : JokesComponent.Factory
+
     fun inject(activity: MainActivity)
 }
