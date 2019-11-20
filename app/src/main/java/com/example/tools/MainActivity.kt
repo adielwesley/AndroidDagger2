@@ -7,7 +7,9 @@ import androidx.navigation.findNavController
 import com.example.tools.di.components.JokesComponent
 import com.example.tools.di.components.LoginComponent
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -83,8 +85,26 @@ class MainActivity : AppCompatActivity() {
             Log.d("result", error.toString())
         })
 
+        Single.fromCallable {
+            hardProccess()
+        }.subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                result ->
+            }, {
+                error ->
+            })
+
         //findNavController(R.id.nav_host_fragment).navigate(R.id.jokes_graph)
     }
+
+    private fun hardProccess() {
+        for (n in 2 .. 200000) {
+            print(n)
+        }
+    }
+
+
 
     inner class UserApi(var name: String, var age: Int, bday: Date, var gender: String)
     inner class UserApp(var name: String, var age: Int)
