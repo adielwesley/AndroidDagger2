@@ -95,7 +95,8 @@ class MainActivity : AppCompatActivity() {
                 error ->
             })
 
-        //findNavController(R.id.nav_host_fragment).navigate(R.id.jokes_graph)
+        //
+        this.findNavController(R.id.nav_host_fragment).navigate(R.id.fragment_jokes)
     }
 
     private fun hardProccess() {
